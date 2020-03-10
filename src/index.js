@@ -99,7 +99,7 @@ function login(event){
     let password = document.getElementById('u-password').value;
 
 
-    fetch("http://localhost:3000/login", {
+    fetch("https://powah-api.herokuapp.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -170,7 +170,7 @@ function createUser(event){
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
 
-    fetch("http://localhost:3000/users", {
+    fetch("https://powah-api.herokuapp.com/users", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -195,7 +195,7 @@ function createUser(event){
 function getCars(){
 
     clearCards();
-    fetch('http://localhost:3000/cars')
+    fetch('https://powah-api.herokuapp.com/cars')
     .then(res => res.json())
     .then(car => { 
         car.forEach((car) =>{
@@ -293,7 +293,7 @@ function submitCar(event){
     const tq = document.getElementById("cartq").value;
     const des = document.getElementById("cardes").value;
     const link = document.getElementById("carlink").value;
-    fetch("http://localhost:3000/cars", {
+    fetch("https://powah-api.herokuapp.com/cars", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -325,7 +325,7 @@ function submitCar(event){
 
         descendingBtn.innerText = 'Sort by Descending';
         descendingBtn.addEventListener('click', sortByHpDescend);
-        fetch('http://localhost:3000/cars')
+        fetch('https://powah-api.herokuapp.com/cars')
             .then(result => result.json())
             .then(dataArray => {
                 const sortedArray = dataArray.sort((current,next) => current.hp - next.hp);
@@ -343,7 +343,7 @@ function submitCar(event){
 
         ascendingBtn.innerText = 'Sort by Ascending';
         ascendingBtn.addEventListener('click', sortByHp);
-        fetch('http://localhost:3000/cars')
+        fetch('https://powah-api.herokuapp.com/cars')
             .then(result => result.json())
             .then(dataArray => {
                 const sortedArray = dataArray.sort((current,next) => next.hp - current.hp);
@@ -359,7 +359,7 @@ function submitCar(event){
         descendingBtn.className ='btn btn-dark';
         descendingBtn.innerText = 'Sort by Descending';
         descendingBtn.addEventListener('click', sortByTqDescend);
-        fetch('http://localhost:3000/cars')
+        fetch('https://powah-api.herokuapp.com/cars')
             .then(result => result.json())
             .then(dataArray => {
                 const sortedArray = dataArray.sort((current,next) => current.tq - next.tq);
@@ -376,7 +376,7 @@ function submitCar(event){
 
         ascendingBtn.innerText = 'Sort by Ascending';
         ascendingBtn.addEventListener('click', sortByTq);
-        fetch('http://localhost:3000/cars')
+        fetch('https://powah-api.herokuapp.com/cars')
             .then(result => result.json())
             .then(dataArray => {
                 const sortedArray = dataArray.sort((current,next) => next.tq - current.tq);
@@ -393,7 +393,7 @@ function submitCar(event){
         descendingBtn.className ='btn btn-dark';
 
         descendingBtn.addEventListener('click', sortByPriceDescend);
-        fetch('http://localhost:3000/cars')
+        fetch('https://powah-api.herokuapp.com/cars')
             .then(result => result.json())
             .then(dataArray => {
 
@@ -412,7 +412,7 @@ function submitCar(event){
         div.appendChild(ascendingBtn);
         ascendingBtn.innerText = 'Sort by Ascending';
         ascendingBtn.addEventListener('click', sortByPrice);
-        fetch('http://localhost:3000/cars')
+        fetch('https://powah-api.herokuapp.com/cars')
             .then(result => result.json())
             .then(dataArray => {
                 const sortedArray = dataArray.sort((current,next) => next.price - current.price);
@@ -425,7 +425,7 @@ function favorite(event){
     let carId = parseInt(event.target.parentElement.id);
     let userId = user.id;
 
-    fetch("http://localhost:3000/user_cars", {
+    fetch("https://powah-api.herokuapp.com/user_cars", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -442,7 +442,7 @@ function favorite(event){
 function myFavs(event){
     console.log('fetching favs');
     clearCards();
-    fetch('http://localhost:3000/user_cars')
+    fetch('https://powah-api.herokuapp.com/user_cars')
     .then(res => res.json())
     .then(favs => {
         favs.forEach(fav =>{
@@ -464,7 +464,7 @@ function myFavs(event){
         let target = event.target;
        let favoriteId = parseInt(event.target.parentElement.dataset.favId);
 
-       fetch(`http://localhost:3000/user_cars/${favoriteId}`,{
+       fetch(`https://powah-api.herokuapp.com/user_cars/${favoriteId}`,{
            method: "DELETE"
        })
        .then(() => {
